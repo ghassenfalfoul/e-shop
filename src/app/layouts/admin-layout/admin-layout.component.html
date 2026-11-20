@@ -1,0 +1,66 @@
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <app-icon name="logo" [size]="38" [strokeWidth]="2.6" />
+      <span class="brand-name">MonShop</span>
+    </div>
+
+    <nav class="nav" aria-label="Navigation principale">
+      @for (item of nav; track item.path) {
+        <a class="nav-item" [routerLink]="item.path" routerLinkActive="active">
+          <app-icon [name]="item.icon" [size]="22" />
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="titles">
+        <h1>{{ title() }}</h1>
+        <p>{{ subtitle() }}</p>
+      </div>
+
+      <div class="topbar-right">
+        <button
+          type="button"
+          class="theme-toggle"
+          role="switch"
+          [class.dark]="theme.isDark()"
+          [attr.aria-checked]="theme.isDark()"
+          [attr.aria-label]="theme.isDark() ? 'Passer en mode clair' : 'Passer en mode sombre'"
+          (click)="theme.toggle()"
+        >
+          <span class="knob"></span>
+          <app-icon class="mode-icon" [name]="theme.isDark() ? 'sun' : 'moon'" [size]="18" />
+        </button>
+
+        <span class="divider"></span>
+
+        <div class="profile">
+          <button type="button" class="profile-btn" (click)="toggleMenu($event)" aria-haspopup="menu" [attr.aria-expanded]="menuOpen()">
+            <span class="avatar">{{ auth.initials() }}</span>
+            <span class="profile-info">
+              <strong>{{ auth.user()?.fullName }}</strong>
+              <small><i class="dot"></i>Administrateur</small>
+            </span>
+            <app-icon name="chevron-down" [size]="18" />
+          </button>
+
+          @if (menuOpen()) {
+            <div class="menu" role="menu">
+              <button type="button" role="menuitem" (click)="logout()">
+                <app-icon name="logout" [size]="18" /> Déconnexion
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>
