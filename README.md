@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MonShop – Back-office Web Administrateur (Sprints 1 & 2)
 
 Application Angular 18 (standalone components, signaux, nouvelle syntaxe de contrôle `@if` / `@for`).
@@ -27,3 +28,6 @@ alertes de rupture (stock ≤ 5), bandeau « Suggestion IA ».
 - Stock ≤ 5 ⇒ alerte rouge
 
 Les données sont simulées dans `core/services` ; le branchement à l'API (base `ecommerce_db`) se fera dans un sprint ultérieur.
+=======
+# e-shop
+>>>>>>> 08526cc692945cddb0a5ccdb52a7cc1b5b53c652
